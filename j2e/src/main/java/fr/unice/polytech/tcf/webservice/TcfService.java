@@ -15,7 +15,7 @@ public interface TcfService {
     @WebMethod
     @WebResult(name = "boutique_Detail")
     public String getBoutique(@WebParam(name = "adresse")String adresse);
-    //
+
 //
 //    @WebMethod
 //    @WebResult(name = "created")
@@ -29,18 +29,18 @@ public interface TcfService {
     @WebResult(name = "ingredient_list")
     public List<String> listIngredientsDetail();
 
-    @WebMethod
-    @WebResult(name = "created")
-    public boolean creatIngredient(@WebParam(name = "name")String name,
-                                   @WebParam(name = "price")double price);
+//    @WebMethod
+//    @WebResult(name = "created")
+//    public boolean creatIngredient(@WebParam(name = "name")String name,
+//                                   @WebParam(name = "price")double price);
 
-    @WebMethod
-    @WebResult(name = "isExist")
-    public boolean ingredientIsExist(@WebParam(name = "name")String name);
-
-    @WebMethod
-    @WebResult(name = "deleted")
-    public boolean supprimerIngredient(@WebParam(name = "name")String name);
+//    @WebMethod
+//    @WebResult(name = "isExist")
+//    public boolean ingredientIsExist(@WebParam(name = "name")String name);
+//
+//    @WebMethod
+//    @WebResult(name = "deleted")
+//    public boolean supprimerIngredient(@WebParam(name = "name")String name);
 
     @WebMethod
     @WebResult
@@ -89,11 +89,11 @@ public interface TcfService {
     @WebMethod
     @WebResult(name = "statis_nbCommande")
     public int viewStatistiqueCommande(@WebParam(name = "adresse")String adress);
-
-
-    @WebMethod
-    @WebResult(name = "statis_nbCookie")
-    public int viewStatistiqueCookies(@WebParam(name = "adresse")String adress);
+//
+//
+//    @WebMethod
+//    @WebResult(name = "statis_nbCookie")
+//    public int viewStatistiqueCookies(@WebParam(name = "adresse")String adress);
 //
 //    @WebMethod
 //    @WebResult(name = "all_cookies")

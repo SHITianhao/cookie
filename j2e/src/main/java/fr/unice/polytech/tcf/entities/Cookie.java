@@ -1,7 +1,10 @@
 package fr.unice.polytech.tcf.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Julien LVS on 14/03/15.
@@ -15,10 +18,11 @@ public class Cookie implements Serializable{
     private String name;
     private double totalHT=0;
 
-//    private Commande commande;
-//    private Set<Ingredient> ingredients = new HashSet<Ingredient>();
-
-    public Cookie(){}
+    private List<Commande> commande;
+    private List<Ingredient> ingredients;
+    public Cookie(){
+        ingredients = new ArrayList<Ingredient>();
+    }
 
 //    //Pour une recette spéciale
 //    public Cookie(String special)
@@ -40,6 +44,7 @@ public class Cookie implements Serializable{
 
 
     @Column(name = "NAME")
+    @NotNull
     public String getName() {
         return name;
     }
@@ -54,20 +59,31 @@ public class Cookie implements Serializable{
         this.totalHT = tot;
     }
 
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "COOK_INGR")
-//    public Set<Ingredient> getIngredients() { return ingredients; }
-//
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    public Commande getCommande(){return commande;}
+    @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name = "COOK_INGR")
+    public List<Ingredient> getIngredients() { return ingredients; }
+    public void setIngredients(List<Ingredient> i) {
+        this.ingredients = i;
+    }
+    public void addIngredient(Ingredient i) {
+        if (this.ingredients == null){
+            this.ingredients = new ArrayList<Ingredient>();
+        }
+        this.ingredients.add(i);
+        setTotalHT(getTotalHT()+i.getPrice());
+    }
+    public int nbIngredient(){
+        if (ingredients == null)
+            return 0;
+        return ingredients.size();
+    }
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    public List<Commande> getCommande(){return commande;}
+    public void setCommande(List<Commande> c) {this.commande = c;}
 
 
-//    public void addIngredient(Ingredient i) {
-//        Set<Ingredient> ing = getIngredients();
-//        ing.add(i);
-//        setIngredients(ing);
-//        setTotalHT(getTotalHT()+i.getPrice());
-//    }
+
 //    public void removeIngredient(Ingredient i2) {
 //        Set<Ingredient> ing = getIngredients();
 //        ing.remove(i2);
@@ -75,13 +91,9 @@ public class Cookie implements Serializable{
 //        //ingredients.remove(i2);
 //    }
 //
-//    public void setIngredients(Set<Ingredient> i)
-//    {
-//        this.ingredients = i;
-//    }
+
 //
-//
-//    public void setCommande(Commande c) {this.commande = c;}
+
 //
 //    public String toString() {
 //        Set<Ingredient> ing = this.getIngredients();

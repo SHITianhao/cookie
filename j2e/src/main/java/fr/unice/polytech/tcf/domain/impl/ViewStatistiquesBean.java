@@ -21,6 +21,7 @@ public class ViewStatistiquesBean implements ViewStatistiques {
     @PersistenceContext
     EntityManager entityManager;
 
+    @Override
     public List<Commande> getCommandes(String adresse)
     {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
@@ -47,7 +48,7 @@ public class ViewStatistiquesBean implements ViewStatistiques {
         int nbCookies = 0;
         List<Commande> cmd = getCommandes(adresse);
         for (Commande c : cmd) {
-            nbCookies += c.getCookies().size();
+            nbCookies += c.nbCookies();
         }
         return nbCookies;
     }

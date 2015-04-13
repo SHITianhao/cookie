@@ -33,14 +33,14 @@ public class TcfServiceImpl implements TcfService {
 
 
 
-    @Override
-    public boolean creatIngredient(String name, double price){
-        if (ingredientFinder.getIngredientByName(name) == null){
-            if (addIngredient.addIngredient(name,price)!= null)
-                return true;
-        }
-        return false;
-    }
+//    @Override
+//    public boolean creatIngredient(String name, double price){
+//        if (ingredientFinder.getIngredientByName(name) == null){
+//            if (addIngredient.addIngredient(name,price)!= null)
+//                return true;
+//        }
+//        return false;
+//    }
 
     @Override
     public List<String> listIngredients() {
@@ -60,21 +60,21 @@ public class TcfServiceImpl implements TcfService {
         return result;
     }
 
-    @Override
-    public boolean ingredientIsExist(String name){
-        if(ingredientFinder.getIngredientByName(name) != null){
-            return true;
-        }
-        return false;
-    }
+//    @Override
+//    public boolean ingredientIsExist(String name){
+//        if(ingredientFinder.getIngredientByName(name) != null){
+//            return true;
+//        }
+//        return false;
+//    }
 
-    @Override
-    public boolean supprimerIngredient(String name) {
-        if (addIngredient.deleteIngredient(name) != null){
-            return true;
-        }
-        return false;
-    }
+//    @Override
+//    public boolean supprimerIngredient(String name) {
+//        if (addIngredient.deleteIngredient(name) != null){
+//            return true;
+//        }
+//        return false;
+//    }
 
     @Override
     public void addIngredientToCookie(String name) {
@@ -137,9 +137,9 @@ public class TcfServiceImpl implements TcfService {
         return viewStatistiques.getNbCommandes(adress);
     }
 
-    @Override
-    public int viewStatistiqueCookies(String adress) {
-        return viewStatistiques.getNbCookies(adress);
-    }
+//    @Override
+//    public int viewStatistiqueCookies(String adress) {
+//        return viewStatistiques.getNbCookies(adress);
+//    }
 
 }

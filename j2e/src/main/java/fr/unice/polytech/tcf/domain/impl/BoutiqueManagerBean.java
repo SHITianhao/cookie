@@ -2,7 +2,9 @@ package fr.unice.polytech.tcf.domain.impl;
 
 import fr.unice.polytech.tcf.domain.BoutiqueFinder;
 import fr.unice.polytech.tcf.domain.BoutiqueManager;
+import fr.unice.polytech.tcf.domain.CommandeFinder;
 import fr.unice.polytech.tcf.entities.Boutique;
+import fr.unice.polytech.tcf.entities.Commande;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
@@ -23,6 +25,8 @@ public class BoutiqueManagerBean implements BoutiqueManager {
 
     @EJB
     BoutiqueFinder finder;
+    @EJB
+    CommandeFinder commandeFinder;
 
     @Override
     public Boutique create(String endroit, Calendar open, Calendar close, double taxe) {
@@ -34,6 +38,17 @@ public class BoutiqueManagerBean implements BoutiqueManager {
             boutique.setHoraireClose(close);
             boutique.setTaxe(taxe);
             entityManager.persist(boutique);
+        }
+        return boutique;
+    }
+
+    @Override
+    public Boutique addCommande(String adresse, Long id){
+        Boutique boutique = finder.findByEndroit(adresse);
+        Commande commande = commandeFinder.findById(id);
+        if (boutique != null && commande != null){
+            boutique.addCommande(commande);
+            entityManager.merge(boutique);
         }
         return boutique;
     }

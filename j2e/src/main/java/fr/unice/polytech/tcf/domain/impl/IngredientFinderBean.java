@@ -23,7 +23,7 @@ public class IngredientFinderBean implements IngredientFinder{
     EntityManager entityManager;
 
     @Override
-    public Ingredient getIngredientByName(String name)
+    public Ingredient findByName(String name)
     {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Ingredient> criteria = builder.createQuery(Ingredient.class);

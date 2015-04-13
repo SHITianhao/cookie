@@ -9,4 +9,5 @@ import java.util.Calendar;
  */
 public interface BoutiqueManager {
     Boutique create(String endroit, Calendar open, Calendar close, double taxe);
+    Boutique addCommande(String adresse, Long id);
 }

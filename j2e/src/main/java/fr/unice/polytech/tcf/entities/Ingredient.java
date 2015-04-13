@@ -3,26 +3,25 @@ package fr.unice.polytech.tcf.entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by user on 14/03/15.
  */
 
 @Entity
-@Table(name = "INGREDIENT")
+@Table(name = "INGREDIENTS")
 public class Ingredient implements Serializable {
-//    private Set<Cookie> cookies;
+    private List<Cookie> cookies;
 
     private String name;
     private double price;
     private Long id;
 
-    public Ingredient(String name, double price)
-    {
-        this.setName(name);
-        this.setPrice(price);
+    public Ingredient(){
+        cookies = new ArrayList<Cookie>();
     }
-    public Ingredient(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,7 +35,6 @@ public class Ingredient implements Serializable {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -46,24 +44,19 @@ public class Ingredient implements Serializable {
     public double getPrice() {
         return price;
     }
-
     public void setPrice(double price) {
         this.price = price;
     }
 
-
-
-
-
-
-//    @ManyToMany(mappedBy = "ingredients", cascade = CascadeType.MERGE)
-//    public Set<Cookie> getCookies() { return cookies; }
-//    public void setCookies(Set<Cookie> cookies) { this.cookies = cookies; }
-//    public void addCookie(Cookie c){
-//        Set<Cookie> sc = getCookies();
-//        sc.add(c);
-//        setCookies(sc);
-//    }
+    @ManyToMany(cascade = CascadeType.ALL)//mapping by ingredients => does not work
+    public List<Cookie> getCookies() { return cookies; }
+    public void setCookies(List<Cookie> cookies) { this.cookies = cookies; }
+    public void addCookie(Cookie c){
+        if (this.cookies == null){
+            cookies = new ArrayList<Cookie>();
+        }
+        cookies.add(c);
+    }
 //
 //    public void deleteCookie(Cookie c){
 //        Set<Cookie> sc = getCookies();
@@ -87,7 +80,7 @@ public class Ingredient implements Serializable {
 //
 //		return true;
 //	}
-//
+
 //	@Override
 //	public int hashCode() {
 //		int result;

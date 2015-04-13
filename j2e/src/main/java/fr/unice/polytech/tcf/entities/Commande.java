@@ -3,7 +3,9 @@ package fr.unice.polytech.tcf.entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by Julien LVS on 14/03/15.
@@ -13,15 +15,15 @@ import java.util.Calendar;
 @Table(name = "COMMANDES")
 public class Commande implements Serializable {
     private static final long serialVersionUID = 1L;
-    private long id;
+    private Long id;
     private String owner;
-    private double taxe=0.19;
+    private double taxe;
     private double prixHT;
-    private String boutique;
     private Calendar RDV;
+    private Boutique boutique;
 
 //    private Boutique boutique;
-//    private Set<Cookie> cookies =new HashSet<Cookie>();
+    private List<Cookie> cookies;
 
 
     @Column(name="RDV")
@@ -43,10 +45,7 @@ public class Commande implements Serializable {
 
 
     public Commande() {
-    }
-
-    public Commande(long id) {
-        this.id = id;
+        cookies = new ArrayList<Cookie>();
     }
 
     @Id
@@ -54,6 +53,7 @@ public class Commande implements Serializable {
     public Long getId() {
         return id;
     }
+    public void setId(Long id) {this.id = id;}
 
     @Column(name = "OWNER")
     @NotNull
@@ -63,37 +63,45 @@ public class Commande implements Serializable {
     public void setOwner(String s) {this.owner = s;}
 
 
-//    @OneToMany(mappedBy = "commande", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    public Set<Cookie> getCookies() {
-//        return cookies;
-//    }
-//    public void setCookies(Set<Cookie> c){ cookies = c;  }
-//    public void addCookie(Cookie r){
-//        Set<Cookie> hc = getCookies();
-//        hc.add(r);
-//        setCookies(hc);
-//    }
+    @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    public List<Cookie> getCookies() {
+        return cookies;
+    }
+    public void setCookies(List<Cookie> c){ cookies = c;  }
+    public void addCookie(Cookie c){
+        if (this.cookies == null){
+            this.cookies = new ArrayList<Cookie>();
+        }
+        this.cookies.add(c);
+    }
+
+    public int nbCookies(){
+        if (cookies == null)
+            return 0;
+        return this.cookies.size();
+    }
 
     @Column(name = "TAXE")
+    @NotNull
     public double getTaxe() {
         return taxe;
     }
     public void setTaxe(double t) {this.taxe = t;}
 
     @Column(name = "BOUTIQUE")
-    public String getBoutique() {
+    public Boutique getBoutique() {
         return boutique;
     }
-    public void setBoutique(String boutique) {
+    public void setBoutique(Boutique boutique) {
         this.boutique = boutique;
     }
 
-//    public void calculatePrice()
-//    {
-//        for(Cookie r : getCookies()) {
-//            setPrixHT(r.getTotalHT() +getPrixHT());
-//        }
-//    }
+    public void calculatePrice()
+    {
+        for(Cookie r : getCookies()) {
+            setPrixHT(r.getTotalHT() +getPrixHT());
+        }
+    }
 //
 //    public String generateCommand() {
 //        String toSend ="";

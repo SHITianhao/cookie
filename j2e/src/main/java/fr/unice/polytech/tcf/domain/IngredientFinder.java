@@ -8,6 +8,6 @@ import java.util.List;
  * Created by sth on 10/04/15.
  */
 public interface IngredientFinder {
-    Ingredient getIngredientByName(String name);
+    Ingredient findByName(String name);
     public List<Ingredient> findAll();
 }

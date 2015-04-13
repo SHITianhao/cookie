@@ -2,7 +2,9 @@ package fr.unice.polytech.tcf.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by SHI Tianhao on 22/03/15.
@@ -15,9 +17,11 @@ public class Boutique implements Serializable{
     private double taxe = 0.19;
     private Long id;
     private String endroit;
-    //private Set<Commande> commandes=new HashSet<Commande>();
+    private List<Commande> commandes;
 
-    public Boutique(){}
+    public Boutique(){
+        commandes = new ArrayList<Commande>();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,14 +31,12 @@ public class Boutique implements Serializable{
 
     @Column(name = "ENDROIT")
     public String getEndroit(){return this.endroit; }
-
     public void setEndroit(String endroit){ this.endroit = endroit;}
 
     @Column(name = "HORAIRE_OPEN")
     public Calendar getHoraireOpen(){
         return this.horaireOpen;
     }
-
     public void setHoraireOpen(Calendar horaire){
         this.horaireOpen = horaire;
     }
@@ -43,7 +45,6 @@ public class Boutique implements Serializable{
     public Calendar getHoraireClose(){
         return this.horaireClose;
     }
-
     public void setHoraireClose(Calendar horaire){
         this.horaireClose = horaire;
     }
@@ -52,9 +53,28 @@ public class Boutique implements Serializable{
     public double getTaxe(){
         return this.taxe;
     }
-
     public void setTaxe(double taxe){
         this.taxe = taxe;
+    }
+
+
+    @OneToMany
+    public List<Commande> getCommandes(){
+        return this.commandes;
+    }
+    public void setCommandes(List<Commande> cs){
+        this.commandes = cs;
+    }
+    public void addCommande(Commande commande){
+        if (this.commandes == null){
+            this.commandes = new ArrayList<Commande>();
+        }
+        this.commandes.add(commande);
+    }
+    public int nbCommande(){
+        if (this.commandes == null)
+            return 0;
+        return this.commandes.size();
     }
 
     public boolean validerRDV(Commande commande){
@@ -64,6 +84,8 @@ public class Boutique implements Serializable{
         }
         return false;
     }
+
+
 
 //    @Override
 //    public boolean equals(Object o) {

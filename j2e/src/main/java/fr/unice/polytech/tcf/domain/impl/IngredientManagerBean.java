@@ -1,7 +1,9 @@
 package fr.unice.polytech.tcf.domain.impl;
 
+import fr.unice.polytech.tcf.domain.CookieFinder;
 import fr.unice.polytech.tcf.domain.IngredientManager;
 import fr.unice.polytech.tcf.domain.IngredientFinder;
+import fr.unice.polytech.tcf.entities.Cookie;
 import fr.unice.polytech.tcf.entities.Ingredient;
 
 import javax.ejb.EJB;
@@ -22,20 +24,39 @@ public class IngredientManagerBean implements IngredientManager {
     EntityManager entityManager;
     @EJB
     IngredientFinder finder;
+    @EJB
+    CookieFinder cookieFinder;
 
     @Override
-    public Ingredient addIngredient(String name, double price){
+    public Ingredient create(String name, double price){
+        Ingredient ingredient = finder.findByName(name);
+        if (ingredient == null){
+            ingredient = new Ingredient();
+            ingredient.setName(name);
+            ingredient.setPrice(price);
+            entityManager.persist(ingredient);
+        }
 
-        Ingredient i = new Ingredient(name,price);
-        entityManager.persist(i);
-        return i;
+        return ingredient;
     }
 
     @Override
-    public Ingredient deleteIngredient(String name){
-        Ingredient i = finder.getIngredientByName(name);
+    public Ingredient remove(String name){
+        Ingredient i = finder.findByName(name);
         entityManager.remove(i);
         return i;
     }
+
+    @Override
+    public Ingredient addCookie(String name,String cookie) {
+        Ingredient i = finder.findByName(name);
+        Cookie c = cookieFinder.findByName(cookie);
+        if (i != null && c != null){
+            i.addCookie(c);
+            entityManager.merge(i);
+        }
+        return i;
+    }
+
 
 }
