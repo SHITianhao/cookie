@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/tcf" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://webservice.tcf.polytech.unice.fr/" name="TcfServiceImplService" targetNamespace="http://www.polytech.unice.fr/tcf">
+  <wsdl:import location="http://localhost:8080/demo/webservices/TcfServiceImpl?wsdl=TcfService.wsdl" namespace="http://webservice.tcf.polytech.unice.fr/">
+    </wsdl:import>
+  <wsdl:binding name="TcfServiceImplServiceSoapBinding" type="ns1:TcfService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="listIngredients">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listIngredients">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listIngredientsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listIngredientsDetail">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listIngredientsDetail">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listIngredientsDetailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="boutiqueIsExist">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="boutiqueIsExist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="boutiqueIsExistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listBoutiques">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listBoutiques">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listBoutiquesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validCommande">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validCommande">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validCommandeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCommand">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createCommand">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createCommandResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatIngredient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creatIngredient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creatIngredientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerBoutique">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creerBoutique">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creerBoutiqueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addIngredientToCookie">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addIngredientToCookie">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addIngredientToCookieResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewStatistiqueCookies">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="viewStatistiqueCookies">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="viewStatistiqueCookiesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoutique">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBoutique">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBoutiqueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingredientIsExist">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="ingredientIsExist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ingredientIsExistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="supprimerIngredient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="supprimerIngredient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="supprimerIngredientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewStatistiqueCommande">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="viewStatistiqueCommande">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="viewStatistiqueCommandeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TcfServiceImplService">
+    <wsdl:port binding="tns:TcfServiceImplServiceSoapBinding" name="TcfServiceImplPort">
+      <soap:address location="http://localhost:8080/demo/webservices/TcfServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

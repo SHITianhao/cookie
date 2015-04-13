@@ -1,0 +1,16 @@
+------The Cookie Factory-------
+Commande n: 0
+Nom du client:Jean Michel
+Boutique de retrait: Manosque
+Contenu du cookie 0
+poisson   5.0
+
+
+Contenu du cookie 0
+poisson   5.0
+poisson   5.0
+patates   100.0
+
+
+Prix HT :115.0
+Prix TTC :136.85

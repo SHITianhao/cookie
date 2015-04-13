@@ -1,0 +1,9 @@
+.idea/*
+client/target/*
+j2e/target/*
+j2ebis/target/*
+lib/*
+client/mini-jira-frontend.iml
+j2e/demo.iml
+j2e/demo (1).iml
+
