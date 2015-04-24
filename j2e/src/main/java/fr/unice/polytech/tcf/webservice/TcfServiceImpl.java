@@ -19,7 +19,7 @@ import java.util.List;
 public class TcfServiceImpl implements TcfService {
 
     @EJB
-    BoutiqueManager boutiqueManager;
+    CreateBoutique createBoutique;
     @EJB
     BoutiqueFinder boutiqueFinder;
     @EJB
@@ -95,7 +95,7 @@ public class TcfServiceImpl implements TcfService {
             return false;
         }
         else {
-            boutique = boutiqueManager.create(adresse,ouvert,fermer,taxe);
+            boutique = createBoutique.create(adresse,ouvert,fermer,taxe);
             if (boutique != null)
                 return true;
             else

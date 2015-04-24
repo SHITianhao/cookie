@@ -7,7 +7,6 @@ import java.util.Calendar;
 /**
  * Created by sth on 22/03/15.
  */
-public interface BoutiqueManager {
+public interface CreateBoutique {
     Boutique create(String endroit, Calendar open, Calendar close, double taxe);
-    Boutique addCommande(String adresse, Long id);
 }

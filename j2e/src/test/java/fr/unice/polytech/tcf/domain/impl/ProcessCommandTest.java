@@ -1,6 +1,12 @@
 package fr.unice.polytech.tcf.domain.impl;
 
+import fr.unice.polytech.tcf.domain.ProcessCommand;
+import fr.unice.polytech.tcf.entities.Commande;
+import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.shrinkwrap.api.Archive;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.runner.RunWith;
 
 /**
@@ -9,15 +15,15 @@ import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
 public class ProcessCommandTest {
-//    @Deployment
-//    public static Archive<?> createDeployment() {
-//        return ShrinkWrap.create(WebArchive.class, "test.war")
-//                .addPackage(Commande.class.getPackage())
-//                .addAsWebInfResource("META-INF/persistence.xml", "persistence.xml")
-//                .addPackage(ProcessCommand.class.getPackage())
-//                .addPackage(ProcessCommandBean.class.getPackage());
-//
-//    }
+    @Deployment
+    public static Archive<?> createDeployment() {
+        return ShrinkWrap.create(WebArchive.class, "test.war")
+                .addPackage(Commande.class.getPackage())
+                .addAsWebInfResource("META-INF/persistence.xml", "persistence.xml")
+                .addPackage(ProcessCommand.class.getPackage())
+                .addPackage(ProcessCommandBean.class.getPackage());
+
+    }
 //
 //    @EJB
 //    private IngredientManager im;

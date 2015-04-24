@@ -59,7 +59,7 @@ public class Cookie implements Serializable{
         this.totalHT = tot;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, fetch=FetchType.EAGER)
     @JoinTable(name = "COOK_INGR")
     public List<Ingredient> getIngredients() { return ingredients; }
     public void setIngredients(List<Ingredient> i) {
@@ -78,7 +78,7 @@ public class Cookie implements Serializable{
         return ingredients.size();
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.REFRESH,CascadeType.DETACH})
     public List<Commande> getCommande(){return commande;}
     public void setCommande(List<Commande> c) {this.commande = c;}
 

@@ -28,6 +28,9 @@ public class Boutique implements Serializable{
     public Long getId() {
         return id;
     }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Column(name = "ENDROIT")
     public String getEndroit(){return this.endroit; }
@@ -58,7 +61,8 @@ public class Boutique implements Serializable{
     }
 
 
-    @OneToMany
+    @OneToMany(mappedBy = "boutique",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OrderBy(value = "id ASC")
     public List<Commande> getCommandes(){
         return this.commandes;
     }

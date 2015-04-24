@@ -29,6 +29,14 @@
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
             <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:data/hsqldb/tcfsource;shutdown=true"/>
+
+            <!--In previous releases, OpenJPA would check the database for the existence of the related Entity before
+             persisting the relationship to that Entity. This resulted in an extra Select being sent to the database.
+             In 2.2.0, code was added so that when cascading a persist to a related Entity without persistence state,
+             the persist (insert) will happen without first checking the database. This may result in an EntityExistsException
+             if the related Entity already exists in the database. To revert this behavior to the previous release,
+             set the value of the openjpa.Compatibility property CheckDatabaseForCascadePersistToDetachedEntity to true.-->
+            <property name=" openjpa.Compatibility" value="CheckDatabaseForCascadePersistToDetachedEntity=true"/>
         </properties>
     </persistence-unit>
 </persistence>

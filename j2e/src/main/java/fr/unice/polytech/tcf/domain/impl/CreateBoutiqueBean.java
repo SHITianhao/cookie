@@ -1,10 +1,9 @@
 package fr.unice.polytech.tcf.domain.impl;
 
 import fr.unice.polytech.tcf.domain.BoutiqueFinder;
-import fr.unice.polytech.tcf.domain.BoutiqueManager;
+import fr.unice.polytech.tcf.domain.CreateBoutique;
 import fr.unice.polytech.tcf.domain.CommandeFinder;
 import fr.unice.polytech.tcf.entities.Boutique;
-import fr.unice.polytech.tcf.entities.Commande;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
@@ -18,7 +17,7 @@ import java.util.Calendar;
  */
 @Stateless
 @Remote
-public class BoutiqueManagerBean implements BoutiqueManager {
+public class CreateBoutiqueBean implements CreateBoutique {
 
     @PersistenceContext
     EntityManager entityManager;
@@ -42,16 +41,6 @@ public class BoutiqueManagerBean implements BoutiqueManager {
         return boutique;
     }
 
-    @Override
-    public Boutique addCommande(String adresse, Long id){
-        Boutique boutique = finder.findByEndroit(adresse);
-        Commande commande = commandeFinder.findById(id);
-        if (boutique != null && commande != null){
-            boutique.addCommande(commande);
-            entityManager.merge(boutique);
-        }
-        return boutique;
-    }
 
 
 

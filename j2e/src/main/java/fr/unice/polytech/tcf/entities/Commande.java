@@ -88,7 +88,9 @@ public class Commande implements Serializable {
     }
     public void setTaxe(double t) {this.taxe = t;}
 
-    @Column(name = "BOUTIQUE")
+
+    @ManyToOne(cascade={CascadeType.REFRESH,CascadeType.MERGE},optional=false)
+//    @JoinColumn(name = "boutique_id",nullable=true)
     public Boutique getBoutique() {
         return boutique;
     }
@@ -162,6 +164,7 @@ public class Commande implements Serializable {
 //        temp = Double.doubleToLongBits(getPrixHT());
 //        result = 31 * result + (int) (temp ^ (temp >>> 32));
 //        result = 31 * result + (getRDV() != null ? getRDV().hashCode() : 0);
+//        result = 31 * result + (getBoutique() != null ? getBoutique().hashCode() : 0);
 //        return result;
 //    }
 

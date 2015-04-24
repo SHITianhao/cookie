@@ -1,6 +1,7 @@
 package fr.unice.polytech.tcf.domain;
 
 import fr.unice.polytech.tcf.entities.Boutique;
+import fr.unice.polytech.tcf.entities.Commande;
 import fr.unice.polytech.tcf.entities.Ingredient;
 
 import java.util.List;
@@ -15,20 +16,23 @@ public interface ProcessCommand {
     List<Boutique> listBoutiques();
 
     //1. Créer la commande
-    void createCommand(String owner, String magasin);
+    Commande createCommand(String owner, String boutique);
+
+    void addCookieDansCmd(String name);
+
+    //OPT . Créer un nouveau cookie
+    void createNouveauCookie(String name);
 
     //2. Lister les ingrédients pour que l'utilisateur puisse choisir
     List<Ingredient> findAllIngredients();
 
     //3 . Ajouter des ingrédients
-    void ajouterIngredient(String name);
+    void ajouterIngredient(String name,String cookie);
 
     // 3b . en enlever
-    void deleteIngredient(String name);
+    void deleteIngredient(String name,String cookie);
 
-    //OPT . Créer un nouveau cookie
-    void ajouterCookie();
 
     // 4 Valider la commande
-    public String validate();
+    public String validate(Long id);
 }

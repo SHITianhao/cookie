@@ -1,8 +1,10 @@
 package fr.unice.polytech.tcf.domain.impl;
 
+import fr.unice.polytech.tcf.domain.BoutiqueFinder;
 import fr.unice.polytech.tcf.domain.CommandeFinder;
 import fr.unice.polytech.tcf.domain.CommandeManager;
 import fr.unice.polytech.tcf.domain.CookieFinder;
+import fr.unice.polytech.tcf.entities.Boutique;
 import fr.unice.polytech.tcf.entities.Commande;
 import fr.unice.polytech.tcf.entities.Cookie;
 
@@ -23,16 +25,20 @@ public class CommandeManagerBean implements CommandeManager {
     @EJB
     CommandeFinder finder;
     @EJB
+    BoutiqueFinder boutiqueFinder;
+    @EJB
     CookieFinder cookieFinder;
 
 
     @Override
-    public Commande create(String owner,double taxe) {
+    public Commande create(String boutique,String owner,double taxe) {
         Commande commande = finder.findByOwner(owner);
-        if (commande == null){
+        Boutique b = boutiqueFinder.findByEndroit(boutique);
+        if (commande == null && b != null){
             commande = new Commande();
             commande.setOwner(owner);
             commande.setTaxe(taxe);
+            commande.setBoutique(b);
             entityManager.persist(commande);
         }
         return commande;
