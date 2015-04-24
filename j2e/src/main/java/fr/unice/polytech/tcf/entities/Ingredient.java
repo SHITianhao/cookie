@@ -51,12 +51,12 @@ public class Ingredient implements Serializable {
     @ManyToMany(mappedBy = "ingredients")//mapping by ingredients => does not work
     public List<Cookie> getCookies() { return cookies; }
     public void setCookies(List<Cookie> cookies) { this.cookies = cookies; }
-    public void addCookie(Cookie c){
-        if (this.cookies == null){
-            cookies = new ArrayList<Cookie>();
-        }
-        cookies.add(c);
-    }
+//    public void addCookie(Cookie c){
+//        if (this.cookies == null){
+//            cookies = new ArrayList<Cookie>();
+//        }
+//        cookies.add(c);
+//    }
 //
 //    public void deleteCookie(Cookie c){
 //        Set<Cookie> sc = getCookies();

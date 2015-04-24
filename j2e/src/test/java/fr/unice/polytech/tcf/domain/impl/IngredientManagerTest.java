@@ -38,10 +38,11 @@ public class IngredientManagerTest {
 
     @Test
     public void testIngredients() {
-        Ingredient ingredient = ingredientManager.create("cola",10);
+        Ingredient ingredient = ingredientManager.create("cola",10.5);
         Ingredient ingredient2 = ingredientManager.create("coooolaaaaa",100);
         Ingredient found = ingredientFinder.findByName("cola");
         Ingredient found2 = ingredientFinder.findByName("coooolaaaaa");
+        assertEquals(found.getPrice(),10.5,0.000001);
         assertEquals(ingredient.getId(),found.getId());
         assertEquals(ingredient.getName(),found.getName());
         assertEquals(ingredient.getPrice(),found.getPrice(),0.0000001);

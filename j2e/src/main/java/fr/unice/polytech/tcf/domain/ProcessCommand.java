@@ -27,12 +27,14 @@ public interface ProcessCommand {
     List<Ingredient> findAllIngredients();
 
     //3 . Ajouter des ingrédients
-    void ajouterIngredient(String name,String cookie);
+    void ajouterIngredient(String name);
 
     // 3b . en enlever
-    void deleteIngredient(String name,String cookie);
+    void deleteIngredient(String name);
+
+    void validNewCookie();
 
 
     // 4 Valider la commande
-    public String validate(Long id);
+    public String validate();
 }

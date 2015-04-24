@@ -7,6 +7,4 @@ import fr.unice.polytech.tcf.entities.Ingredient;
  */
 public interface IngredientManager {
     public Ingredient create(String name, double price);
-    public Ingredient remove(String name);
-    public Ingredient addCookie(String name,String cookie);
 }

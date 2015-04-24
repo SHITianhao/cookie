@@ -67,12 +67,11 @@ public class Commande implements Serializable {
     public List<Cookie> getCookies() {
         return cookies;
     }
-    public void setCookies(List<Cookie> c){ cookies = c;  }
-    public void addCookie(Cookie c){
-        if (this.cookies == null){
-            this.cookies = new ArrayList<Cookie>();
+    public void setCookies(List<Cookie> c){
+        cookies = c;
+        if (this.cookies != null){
+            calculatePrice();
         }
-        this.cookies.add(c);
     }
 
     public int nbCookies(){
@@ -98,29 +97,31 @@ public class Commande implements Serializable {
         this.boutique = boutique;
     }
 
-    public void calculatePrice()
+    private void calculatePrice()
     {
+        double price = 0;
         for(Cookie r : getCookies()) {
-            setPrixHT(r.getTotalHT() +getPrixHT());
+            price += r.getTotalHT();
         }
+        setPrixHT(price);
     }
-//
-//    public String generateCommand() {
-//        String toSend ="";
-//        toSend+="------The Cookie Factory-------\n";
-//        toSend+="Conservez l'ID de commande qui vous servira a retirer la commande\n";
-//        toSend+="Commande n: " + getId()+"\n";
-//        toSend+="Nom du client:"  + getOwner()+"\n";
-//        toSend+="Boutique de retrait: " + getBoutique()+"\n";
-//        for(Cookie r : getCookies()) {
-//            toSend+= "Contenu du cookie "+r.toString()+"\n";
-//
-//        }
-//
-//        toSend+= "Prix HT :" + getPrixHT()+"\n";
-//        toSend+= "Prix TTC :" +(getTaxe()+1)*getPrixHT()+"\n";
-//        return toSend;
-//    }
+
+    public String generateCommand() {
+        String toSend ="";
+        toSend+="------The Cookie Factory-------\n";
+        toSend+="Conservez l'ID de commande qui vous servira a retirer la commande\n";
+        toSend+="Commande n: " + getId()+"\n";
+        toSend+="Nom du client:"  + getOwner()+"\n";
+        toSend+="Boutique de retrait: " + getBoutique()+"\n";
+        toSend+= "Contenu du cookie:\n";
+        for(Cookie r : getCookies()) {
+            toSend+=r.toString()+"\n";
+
+        }
+        toSend+= "Prix HT :" + getPrixHT()+"\n";
+        toSend+= "Prix TTC :" +(getTaxe()+1)*getPrixHT()+"\n";
+        return toSend;
+    }
 
 
 
@@ -128,9 +129,9 @@ public class Commande implements Serializable {
 
 
 
-//    public String toString() {
-//        return "Commande[" + this.getId() + "]";
-//    }
+    public String toString() {
+        return "Commande[" + this.getId() + "]";
+    }
 
 
 

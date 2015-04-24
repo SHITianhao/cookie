@@ -13,13 +13,14 @@ import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by sth on 14/04/15.
  */
 @Stateful
-public class ProcessCommandBean implements ProcessCommand {
+public class  ProcessCommandBean implements ProcessCommand {
 
     @PersistenceContext
     EntityManager entityManager;
@@ -32,6 +33,9 @@ public class ProcessCommandBean implements ProcessCommand {
     IngredientFinder ingredientFinder;
 
     Commande commande;
+    Cookie newCookie;
+    List<Ingredient> newCookie_ings = new ArrayList<Ingredient>();
+    List<Cookie> commande_cookies = new ArrayList<Cookie>();
 
     @Override
     public List<Boutique> listBoutiques() {
@@ -40,6 +44,10 @@ public class ProcessCommandBean implements ProcessCommand {
 
     @Override
     public Commande createCommand(String owner, String boutique) {
+        //clean les données
+        newCookie = null;
+        newCookie_ings.clear();
+        commande_cookies.clear();
         Boutique b = boutiqueFinder.findByEndroit(boutique);
         if (b != null){
             commande = new Commande();
@@ -52,13 +60,21 @@ public class ProcessCommandBean implements ProcessCommand {
 
     @Override
     public void addCookieDansCmd(String name) {
-        Cookie cookie = co
+        Cookie cookie = cookieFinder.findByName(name);
+        commande_cookies.add(cookie);
     }
 
     //OPT . Créer un nouveau cookie
     @Override
     public void createNouveauCookie(String name) {
-
+        newCookie = cookieFinder.findByName(name);
+        newCookie_ings = new ArrayList<Ingredient>();
+        if (newCookie == null){
+            newCookie = new Cookie();
+            newCookie.setName(name);
+        }else {
+            newCookie = null;
+        }
     }
 
     @Override
@@ -68,20 +84,43 @@ public class ProcessCommandBean implements ProcessCommand {
 
     //3 . Ajouter des ingrédients
     @Override
-    public void ajouterIngredient(String name, String cookie) {
-
+    public void ajouterIngredient(String name) {
+        Ingredient ingredient = ingredientFinder.findByName(name);
+        if (newCookie != null && ingredient != null){
+            newCookie_ings.add(ingredient);
+        }
     }
 
     // 3b . en enlever
     @Override
-    public void deleteIngredient(String name, String cookie) {
-
+    public void deleteIngredient(String name) {
+        Ingredient ingredient = ingredientFinder.findByName(name);
+        if (newCookie != null && ingredient != null){
+//            newCookie
+        }
     }
 
-
+    @Override
+    public void validNewCookie(){
+        if (newCookie != null){
+            entityManager.persist(newCookie);
+            //bizzare...set should after persist,but don't need merge
+            newCookie.setIngredients(newCookie_ings);
+            commande_cookies.add(newCookie);
+        }
+        //clean list
+        newCookie_ings = new ArrayList<Ingredient>();
+        //clean new cookie
+        newCookie = null;
+    }
 
     @Override
-    public String validate(Long id) {
-        return null;
+    public String validate() {
+        entityManager.persist(commande);
+        //bizzare...set should after persist,but don't need merge
+        commande.setCookies(commande_cookies);
+        entityManager.merge(commande);
+        String result = commande.generateCommand();
+        return result;
     }
 }

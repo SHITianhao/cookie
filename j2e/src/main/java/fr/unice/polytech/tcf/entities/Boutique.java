@@ -89,6 +89,9 @@ public class Boutique implements Serializable{
         return false;
     }
 
+    public String toString(){
+        return this.getEndroit();
+    }
 
 
 //    @Override

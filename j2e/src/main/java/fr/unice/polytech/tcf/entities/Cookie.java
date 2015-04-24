@@ -60,25 +60,33 @@ public class Cookie implements Serializable{
     }
 
     @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, fetch=FetchType.EAGER)
-    @JoinTable(name = "COOK_INGR")
     public List<Ingredient> getIngredients() { return ingredients; }
     public void setIngredients(List<Ingredient> i) {
         this.ingredients = i;
-    }
-    public void addIngredient(Ingredient i) {
-        if (this.ingredients == null){
-            this.ingredients = new ArrayList<Ingredient>();
+
+        //calcule price
+        double price = 0;
+        if (this.ingredients != null){
+            for (Ingredient ing : this.ingredients){
+                price += ing.getPrice();
+            }
+            setTotalHT(price);
         }
-        this.ingredients.add(i);
-        setTotalHT(getTotalHT()+i.getPrice());
     }
+//    public void addIngredient(Ingredient i) {
+//        if (this.ingredients == null){
+//            this.ingredients = new ArrayList<Ingredient>();
+//        }
+//        this.ingredients.add(i);
+//        setTotalHT(getTotalHT()+i.getPrice());
+//    }
     public int nbIngredient(){
         if (ingredients == null)
             return 0;
         return ingredients.size();
     }
 
-    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.REFRESH,CascadeType.DETACH})
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     public List<Commande> getCommande(){return commande;}
     public void setCommande(List<Commande> c) {this.commande = c;}
 
@@ -94,17 +102,17 @@ public class Cookie implements Serializable{
 
 //
 
-//
-//    public String toString() {
-//        Set<Ingredient> ing = this.getIngredients();
-//        String toSend="\n";
-//        for (Ingredient i:ing)
-//        {
-//            toSend += i.getName() +"\n";
-//        }
-//
-//        return toSend;
-//    }
+
+    public String toString() {
+        List<Ingredient> ing = this.getIngredients();
+        String toSend= this.getName()+":\n"+"ingredients:\n";
+        for (Ingredient i:ing)
+        {
+            toSend += "\t"+i.getName() +"\n";
+        }
+
+        return toSend;
+    }
 
 
 //    @Override

@@ -39,8 +39,6 @@ public class CreateBoutiqueTest {
     @EJB
     private BoutiqueFinder finder;
     @EJB
-    CommandeManager commandeManager;
-    @EJB
     CookieManager cookieManager;
     @EJB
     IngredientManager ingredientManager;

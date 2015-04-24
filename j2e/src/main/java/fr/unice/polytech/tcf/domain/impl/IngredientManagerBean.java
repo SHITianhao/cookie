@@ -1,9 +1,8 @@
 package fr.unice.polytech.tcf.domain.impl;
 
 import fr.unice.polytech.tcf.domain.CookieFinder;
-import fr.unice.polytech.tcf.domain.IngredientManager;
 import fr.unice.polytech.tcf.domain.IngredientFinder;
-import fr.unice.polytech.tcf.entities.Cookie;
+import fr.unice.polytech.tcf.domain.IngredientManager;
 import fr.unice.polytech.tcf.entities.Ingredient;
 
 import javax.ejb.EJB;
@@ -39,24 +38,5 @@ public class IngredientManagerBean implements IngredientManager {
 
         return ingredient;
     }
-
-    @Override
-    public Ingredient remove(String name){
-        Ingredient i = finder.findByName(name);
-        entityManager.remove(i);
-        return i;
-    }
-
-    @Override
-    public Ingredient addCookie(String name,String cookie) {
-        Ingredient i = finder.findByName(name);
-        Cookie c = cookieFinder.findByName(cookie);
-        if (i != null && c != null){
-            i.addCookie(c);
-            entityManager.merge(i);
-        }
-        return i;
-    }
-
 
 }

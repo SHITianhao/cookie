@@ -10,6 +10,8 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sth on 13/04/15.
@@ -26,24 +28,21 @@ public class CookieManagerBean implements CookieManager {
     IngredientFinder ingredientFinder;
 
     @Override
-    public Cookie create(String name) {
+    public Cookie create(String name,List<String> ingredients) {
         Cookie cookie = finder.findByName(name);
         if (cookie == null){
             cookie = new Cookie();
             cookie.setName(name);
+            List<Ingredient> cookie_ings = new ArrayList<Ingredient>();
+            for (String ing : ingredients){
+                Ingredient i = ingredientFinder.findByName(ing);
+                cookie_ings.add(i);
+            }
             entityManager.persist(cookie);
+            cookie.setIngredients(cookie_ings);
+            entityManager.merge(cookie);
         }
         return cookie;
     }
 
-    @Override
-    public Cookie addIngredient(String cookie,String ingredient){
-        Ingredient ing = ingredientFinder.findByName(ingredient);
-        Cookie ck = finder.findByName(cookie);
-        if (ck != null && ing != null){
-            ck.addIngredient(ing);
-            entityManager.merge(ck);
-        }
-        return ck;
-    }
 }

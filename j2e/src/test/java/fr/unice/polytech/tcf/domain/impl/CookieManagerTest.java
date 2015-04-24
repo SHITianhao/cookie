@@ -11,10 +11,14 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.ejb.EJB;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -42,10 +46,22 @@ public class CookieManagerTest {
     @EJB
     IngredientFinder ingredientFinder;
 
+    List<String> ings = new ArrayList<String>();
+
+    @Before
+    public void init(){
+        ings.add("cookie_ing_1");
+        ings.add("cookie_ing_2");
+
+        Ingredient i = ingredientManager.create("cookie_ing_1",100);
+        Ingredient i1 = ingredientManager.create("cookie_ing_2",100);
+    }
+
+
     @Test
     public void testCreation(){
-        Cookie cookie = cookieManager.create("cookie_test1");
-        Cookie cookie1 = cookieManager.create("cookie_test2");
+        Cookie cookie = cookieManager.create("cookie_test1",ings);
+        Cookie cookie1 = cookieManager.create("cookie_test2",ings);
         Cookie found = cookieFinder.findByName("cookie_test1");
         Cookie found1 = cookieFinder.findByName("cookie_test2");
         assertEquals(cookie.getId(),found.getId());
@@ -54,11 +70,7 @@ public class CookieManagerTest {
 
     @Test
     public void testAddIngredient(){
-        Cookie cookie = cookieManager.create("cookie_test3");
-        Ingredient i = ingredientManager.create("cookie_ing_1",100);
-        Ingredient i1 = ingredientManager.create("cookie_ing_2",100);
-        cookie = cookieManager.addIngredient("cookie_test3","cookie_ing_1");
-        cookie = cookieManager.addIngredient("cookie_test3","cookie_ing_2");
+        Cookie cookie = cookieManager.create("cookie_test3",ings);
         Cookie found = cookieFinder.findByName("cookie_test3");
         assertEquals(found.nbIngredient(),2);
     }
