@@ -3,6 +3,33 @@
     </wsdl:import>
   <wsdl:binding name="ProcessCommandServiceImplServiceSoapBinding" type="ns1:ProcessCommandService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="listIngredients">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listIngredients">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listIngredientsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listIngredientsDetail">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listIngredientsDetail">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listIngredientsDetailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createNewCookie">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createNewCookie">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createNewCookieResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="listBoutiques">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="listBoutiques">
@@ -21,12 +48,12 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="listIngredientsDetail">
+    <wsdl:operation name="listCookies">
       <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="listIngredientsDetail">
+      <wsdl:input name="listCookies">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output name="listIngredientsDetailResponse">
+      <wsdl:output name="listCookiesResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -39,12 +66,21 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="addIngredientToCookie">
+    <wsdl:operation name="chosirUnCookie">
       <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="addIngredientToCookie">
+      <wsdl:input name="chosirUnCookie">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output name="addIngredientToCookieResponse">
+      <wsdl:output name="chosirUnCookieResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validNewCookie">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validNewCookie">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validNewCookieResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -57,12 +93,12 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="viewStatistiqueCommande">
+    <wsdl:operation name="addIngredientToNewCookie">
       <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="viewStatistiqueCommande">
+      <wsdl:input name="addIngredientToNewCookie">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output name="viewStatistiqueCommandeResponse">
+      <wsdl:output name="addIngredientToNewCookieResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

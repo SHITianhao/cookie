@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for addIngredientToCookie complex type.
+ * <p>Java class for createNewCookie complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="addIngredientToCookie">
+ * &lt;complexType name="createNewCookie">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -26,10 +26,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "addIngredientToCookie", propOrder = {
+@XmlType(name = "createNewCookie", propOrder = {
     "name"
 })
-public class AddIngredientToCookie {
+public class CreateNewCookie {
 
     protected String name;
 

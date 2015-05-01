@@ -59,6 +59,11 @@ public class  ProcessCommandBean implements ProcessCommand {
     }
 
     @Override
+    public List<Cookie> findAllCookies(){
+        return cookieFinder.findAll();
+    }
+
+    @Override
     public void addCookieDansCmd(String name) {
         Cookie cookie = cookieFinder.findByName(name);
         if (cookie != null){

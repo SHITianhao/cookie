@@ -33,7 +33,7 @@ public class ClientTerminal {
                 String choix = bufferRead.readLine();
                 switch (choix){
                     case "1":
-//                        new Client().showMenu(port_m);
+                        new Client().showMenu(port_cmd);
                         break;
                     case "2":
 //                        new Manager().showMenu(port_m);

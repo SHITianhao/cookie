@@ -214,7 +214,7 @@ public class Directeur {
         try {
             BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
             System.out.print("\n############ SUPPRIMER COOKIE #################\n");
-            System.out.println("Nom d'cookie?");
+            System.out.println("Nom de cookie?");
             String name = bufferRead.readLine();
             if (port.supprimerCookie(name))
                 System.out.println("SUCCES SUPPRIMER COOKIE: "+ name);

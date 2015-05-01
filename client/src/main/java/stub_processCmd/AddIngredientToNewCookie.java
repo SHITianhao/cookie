@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for viewStatistiqueCommande complex type.
+ * <p>Java class for addIngredientToNewCookie complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="viewStatistiqueCommande">
+ * &lt;complexType name="addIngredientToNewCookie">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="adresse" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,35 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "viewStatistiqueCommande", propOrder = {
-    "adresse"
+@XmlType(name = "addIngredientToNewCookie", propOrder = {
+    "name"
 })
-public class ViewStatistiqueCommande {
+public class AddIngredientToNewCookie {
 
-    protected String adresse;
+    protected String name;
 
     /**
-     * Gets the value of the adresse property.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getAdresse() {
-        return adresse;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Sets the value of the adresse property.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setAdresse(String value) {
-        this.adresse = value;
+    public void setName(String value) {
+        this.name = value;
     }
 
 }

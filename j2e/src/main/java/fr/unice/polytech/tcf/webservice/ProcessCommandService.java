@@ -13,37 +13,39 @@ public interface ProcessCommandService {
 
     @WebMethod
     @WebResult(name = "boutique_Detail")
-    public String getBoutique(@WebParam(name = "adresse")String adresse);
-
-//
-//    @WebMethod
-//    @WebResult(name = "created")
-//    public boolean createCommand(@WebParam(name = "owner") String owner,@WebParam(name = "boutique") String boutique);
-
-    @WebMethod
-    @WebResult(name = "ingredient_list")
-    public List<String> listIngredientsDetail();
-
-
-    @WebMethod
-    @WebResult
-    public void addIngredientToCookie(@WebParam(name = "name")String name);
-
-    //    @WebMethod
-//    @WebResult(name = "IngredientAdded")
-//    public boolean addIngredient(@WebParam(name = "ingredient")String ingredient);
-//
-//    @WebMethod
-//    @WebResult(name = "validated")
-//    public void validate();
+    public String getBoutique(@WebParam(name = "adresse") String adresse);
 
     @WebMethod
     @WebResult(name = "all_boutiques")
     public List<String> listBoutiques();
 
     @WebMethod
-    public void createCommand(@WebParam(name = "owner")String owner,
-                              @WebParam(name = "magasin")String magasin);
+    @WebResult(name = "ingredient_list")
+    public List<String> listIngredients();
+
+    @WebMethod
+    @WebResult(name = "ingredient_list")
+    public List<String> listIngredientsDetail();
+
+    @WebMethod
+    @WebResult(name = "cookie_list")
+    public List<String> listCookies();
+
+    @WebMethod
+    public void createCommand(@WebParam(name = "owner") String owner,
+                              @WebParam(name = "magasin") String magasin);
+
+    @WebMethod
+    public void chosirUnCookie(@WebParam(name = "name") String name);
+
+    @WebMethod
+    public void createNewCookie(@WebParam(name = "name") String name);
+
+    @WebMethod
+    public void addIngredientToNewCookie(@WebParam(name = "name") String name);
+
+    @WebMethod
+    public void validNewCookie();
 
     @WebMethod
     @WebResult(name = "band")
@@ -58,20 +60,12 @@ public interface ProcessCommandService {
 //    @WebResult(name = "statsglobal")
 //    public String getStatsGlobal();
 
-    @WebMethod
-    @WebResult(name = "statis_nbCommande")
-    public int viewStatistiqueCommande(@WebParam(name = "adresse")String adress);
+//    @WebMethod
+//    @WebResult(name = "statis_nbCommande")
+//    public int viewStatistiqueCommande(@WebParam(name = "adresse")String adress);
 //
 //
 //    @WebMethod
 //    @WebResult(name = "statis_nbCookie")
 //    public int viewStatistiqueCookies(@WebParam(name = "adresse")String adress);
-//
-//    @WebMethod
-//    @WebResult(name = "all_cookies")
-//    public List<String> listAllCookies();
-//
-//    @WebMethod
-//    @WebResult(name = "all_cookies")
-//    public void choisirCookiePre(@WebParam(name = "name")String name);
 }

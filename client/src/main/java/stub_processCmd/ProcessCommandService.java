@@ -30,6 +30,39 @@ public interface ProcessCommandService {
      *     returns java.util.List<java.lang.String>
      */
     @WebMethod
+    @WebResult(name = "ingredient_list", targetNamespace = "")
+    @RequestWrapper(localName = "listIngredients", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ListIngredients")
+    @ResponseWrapper(localName = "listIngredientsResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ListIngredientsResponse")
+    public List<String> listIngredients();
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod
+    @WebResult(name = "ingredient_list", targetNamespace = "")
+    @RequestWrapper(localName = "listIngredientsDetail", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ListIngredientsDetail")
+    @ResponseWrapper(localName = "listIngredientsDetailResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ListIngredientsDetailResponse")
+    public List<String> listIngredientsDetail();
+
+    /**
+     * 
+     * @param name
+     */
+    @WebMethod
+    @RequestWrapper(localName = "createNewCookie", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.CreateNewCookie")
+    @ResponseWrapper(localName = "createNewCookieResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.CreateNewCookieResponse")
+    public void createNewCookie(
+        @WebParam(name = "name", targetNamespace = "")
+        String name);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod
     @WebResult(name = "all_boutiques", targetNamespace = "")
     @RequestWrapper(localName = "listBoutiques", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ListBoutiques")
     @ResponseWrapper(localName = "listBoutiquesResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ListBoutiquesResponse")
@@ -52,10 +85,10 @@ public interface ProcessCommandService {
      *     returns java.util.List<java.lang.String>
      */
     @WebMethod
-    @WebResult(name = "ingredient_list", targetNamespace = "")
-    @RequestWrapper(localName = "listIngredientsDetail", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ListIngredientsDetail")
-    @ResponseWrapper(localName = "listIngredientsDetailResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ListIngredientsDetailResponse")
-    public List<String> listIngredientsDetail();
+    @WebResult(name = "cookie_list", targetNamespace = "")
+    @RequestWrapper(localName = "listCookies", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ListCookies")
+    @ResponseWrapper(localName = "listCookiesResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ListCookiesResponse")
+    public List<String> listCookies();
 
     /**
      * 
@@ -76,11 +109,19 @@ public interface ProcessCommandService {
      * @param name
      */
     @WebMethod
-    @RequestWrapper(localName = "addIngredientToCookie", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.AddIngredientToCookie")
-    @ResponseWrapper(localName = "addIngredientToCookieResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.AddIngredientToCookieResponse")
-    public void addIngredientToCookie(
+    @RequestWrapper(localName = "chosirUnCookie", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ChosirUnCookie")
+    @ResponseWrapper(localName = "chosirUnCookieResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ChosirUnCookieResponse")
+    public void chosirUnCookie(
         @WebParam(name = "name", targetNamespace = "")
         String name);
+
+    /**
+     * 
+     */
+    @WebMethod
+    @RequestWrapper(localName = "validNewCookie", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ValidNewCookie")
+    @ResponseWrapper(localName = "validNewCookieResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ValidNewCookieResponse")
+    public void validNewCookie();
 
     /**
      * 
@@ -98,16 +139,13 @@ public interface ProcessCommandService {
 
     /**
      * 
-     * @param adresse
-     * @return
-     *     returns int
+     * @param name
      */
     @WebMethod
-    @WebResult(name = "statis_nbCommande", targetNamespace = "")
-    @RequestWrapper(localName = "viewStatistiqueCommande", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ViewStatistiqueCommande")
-    @ResponseWrapper(localName = "viewStatistiqueCommandeResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.ViewStatistiqueCommandeResponse")
-    public int viewStatistiqueCommande(
-        @WebParam(name = "adresse", targetNamespace = "")
-        String adresse);
+    @RequestWrapper(localName = "addIngredientToNewCookie", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.AddIngredientToNewCookie")
+    @ResponseWrapper(localName = "addIngredientToNewCookieResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_processCmd.AddIngredientToNewCookieResponse")
+    public void addIngredientToNewCookie(
+        @WebParam(name = "name", targetNamespace = "")
+        String name);
 
 }
