@@ -3,9 +3,7 @@ package fr.unice.polytech.tcf.entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Julien LVS on 14/03/15.
@@ -23,7 +21,7 @@ public class Commande implements Serializable {
     private Boutique boutique;
 
 //    private Boutique boutique;
-    private List<Cookie> cookies;
+    private List<Cookie>cookies;
 
 
     @Column(name="RDV")
@@ -74,11 +72,11 @@ public class Commande implements Serializable {
         }
     }
 
-    public int nbCookies(){
-        if (cookies == null)
-            return 0;
-        return this.cookies.size();
-    }
+//    public int nbCookies(){
+//        if (cookies == null)
+//            return 0;
+//        return this.cookies.size();
+//    }
 
     @Column(name = "TAXE")
     @NotNull
@@ -115,7 +113,7 @@ public class Commande implements Serializable {
         toSend+="Boutique de retrait: " + getBoutique()+"\n";
         toSend+= "Contenu du cookie:\n";
         for(Cookie r : getCookies()) {
-            toSend+=r.toString()+"\n";
+            toSend+=r.toString()+":"+"\n";
 
         }
         toSend+= "Prix HT :" + getPrixHT()+"\n";

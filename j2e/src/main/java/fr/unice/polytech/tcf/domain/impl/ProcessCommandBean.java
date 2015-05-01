@@ -61,7 +61,9 @@ public class  ProcessCommandBean implements ProcessCommand {
     @Override
     public void addCookieDansCmd(String name) {
         Cookie cookie = cookieFinder.findByName(name);
-        commande_cookies.add(cookie);
+        if (cookie != null){
+            commande_cookies.add(cookie);
+        }
     }
 
     //OPT . Créer un nouveau cookie

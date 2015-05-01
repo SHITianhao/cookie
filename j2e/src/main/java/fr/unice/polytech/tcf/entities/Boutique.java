@@ -69,17 +69,17 @@ public class Boutique implements Serializable{
     public void setCommandes(List<Commande> cs){
         this.commandes = cs;
     }
-    public void addCommande(Commande commande){
-        if (this.commandes == null){
-            this.commandes = new ArrayList<Commande>();
-        }
-        this.commandes.add(commande);
-    }
-    public int nbCommande(){
-        if (this.commandes == null)
-            return 0;
-        return this.commandes.size();
-    }
+//    public void addCommande(Commande commande){
+//        if (this.commandes == null){
+//            this.commandes = new ArrayList<Commande>();
+//        }
+//        this.commandes.add(commande);
+//    }
+//    public int nbCommande(){
+//        if (this.commandes == null)
+//            return 0;
+//        return this.commandes.size();
+//    }
 
     public boolean validerRDV(Commande commande){
         Calendar rdv = commande.getRDV();

@@ -48,7 +48,7 @@ public class ViewStatistiquesBean implements ViewStatistiques {
         int nbCookies = 0;
         List<Commande> cmd = getCommandes(adresse);
         for (Commande c : cmd) {
-            nbCookies += c.nbCookies();
+            nbCookies += c.getCookies().size();
         }
         return nbCookies;
     }

@@ -2,7 +2,6 @@ package fr.unice.polytech.tcf.domain.impl;
 
 import fr.unice.polytech.tcf.domain.BoutiqueFinder;
 import fr.unice.polytech.tcf.domain.CreateBoutique;
-import fr.unice.polytech.tcf.domain.CommandeFinder;
 import fr.unice.polytech.tcf.entities.Boutique;
 
 import javax.ejb.EJB;
@@ -24,8 +23,6 @@ public class CreateBoutiqueBean implements CreateBoutique {
 
     @EJB
     BoutiqueFinder finder;
-    @EJB
-    CommandeFinder commandeFinder;
 
     @Override
     public Boutique create(String endroit, Calendar open, Calendar close, double taxe) {

@@ -80,11 +80,11 @@ public class Cookie implements Serializable{
 //        this.ingredients.add(i);
 //        setTotalHT(getTotalHT()+i.getPrice());
 //    }
-    public int nbIngredient(){
-        if (ingredients == null)
-            return 0;
-        return ingredients.size();
-    }
+//    public int nbIngredient(){
+//        if (ingredients == null)
+//            return 0;
+//        return ingredients.size();
+//    }
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     public List<Commande> getCommande(){return commande;}

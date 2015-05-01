@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/tcf" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://webservice.tcf.polytech.unice.fr/" name="ManageServiceImplService" targetNamespace="http://www.polytech.unice.fr/tcf">
+  <wsdl:import location="http://localhost:8080/demo/webservices/ManageServiceImpl?wsdl=ManageService.wsdl" namespace="http://webservice.tcf.polytech.unice.fr/">
+    </wsdl:import>
+  <wsdl:binding name="ManageServiceImplServiceSoapBinding" type="ns1:ManageService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="boutiqueIsExist">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="boutiqueIsExist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="boutiqueIsExistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listIngredients">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listIngredients">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listIngredientsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatIngredient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creatIngredient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creatIngredientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerBoutique">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creerBoutique">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creerBoutiqueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingredientIsExist">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="ingredientIsExist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ingredientIsExistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ManageServiceImplService">
+    <wsdl:port binding="tns:ManageServiceImplServiceSoapBinding" name="ManageServiceImplPort">
+      <soap:address location="http://localhost:8080/demo/webservices/ManageServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,6 +1,7 @@
 package fr.unice.polytech.tcf;
 
-import stub.TcfServiceImplService;
+import stub_manage.ManageServiceImplService;
+import stub_processCmd.ProcessCommandServiceImplService;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
@@ -16,7 +17,7 @@ import java.util.GregorianCalendar;
  * Created by sth on 10/04/15.
  */
 public class ClientTerminal {
-    public void showMenu(stub.TcfService port){
+    public void showMenu(stub_manage.ManageService port_m, stub_processCmd.ProcessCommandService port_cmd){
         boolean finish = false;
         try {
             BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
@@ -32,13 +33,13 @@ public class ClientTerminal {
                 String choix = bufferRead.readLine();
                 switch (choix){
                     case "1":
-                        new Client().showMenu(port);
+//                        new Client().showMenu(port_m);
                         break;
                     case "2":
-                        new Manager().showMenu(port);
+//                        new Manager().showMenu(port_cmd);
                         break;
                     case "3":
-                        new Directeur().showMenu(port);
+//                        new Directeur().showMenu(null);
                         break;
                     case "4":
                         finish = true;
@@ -59,17 +60,26 @@ public class ClientTerminal {
 
         // Dynamically building the targeted web service location (default to localhost if not provided)
         String host = ( args.length == 0 ? "localhost" : args[0]);
-        String address = "http://"+host+":8080/demo/webservices/TcfServiceImpl";
-        URL wsdlLocation = null;
-        try { wsdlLocation = new URL(address + "?wsdl"); } catch (Exception e) { System.exit(0); }
+        String address_m = "http://"+host+":8080/demo/webservices/ManageServiceImpl";
+        String address_cmd = "http://"+host+":8080/demo/webservices/ProcessCommandServiceImpl";
 
-        // Instantiating the client stub code
-        stub.TcfServiceImplService srv = new TcfServiceImplService(wsdlLocation); // dynamic WSDL location
-        stub.TcfService port = srv.getTcfServiceImplPort();
+        URL wsdlLocation_m = null;
+        URL wsdlLocation_cmd = null;
+        try { wsdlLocation_m = new URL(address_m + "?wsdl"); } catch (Exception e) { System.exit(0); }
+        try { wsdlLocation_cmd = new URL(address_cmd + "?wsdl"); } catch (Exception e) { System.exit(0); }
+
+        // Instantiating the client stub_manage code
+        stub_manage.ManageServiceImplService srv_m = new ManageServiceImplService(wsdlLocation_m); // dynamic WSDL location
+        stub_manage.ManageService port_m = srv_m.getManageServiceImplPort();
+
+        // Instantiating the client stub_manage code
+        stub_processCmd.ProcessCommandServiceImplService srv_cmd = new ProcessCommandServiceImplService(wsdlLocation_cmd); // dynamic WSDL location
+        stub_processCmd.ProcessCommandService port_cmd = srv_cmd.getProcessCommandServiceImplPort();
 
         // Dynamically setting the address where the web service is really deployed
-        ((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
-
+        ((BindingProvider) port_m).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address_m);
+        // Dynamically setting the address where the web service is really deployed
+        ((BindingProvider) port_cmd).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address_cmd);
 
         GregorianCalendar open = new GregorianCalendar();
         GregorianCalendar close = new GregorianCalendar();
@@ -79,18 +89,18 @@ public class ClientTerminal {
         close.set(Calendar.MINUTE,0);
 
         try {
-            port.creerBoutique("polytech",
+            port_m.creerBoutique("polytech",
                     DatatypeFactory.newInstance().newXMLGregorianCalendar(open),
                     DatatypeFactory.newInstance().newXMLGregorianCalendar(close),
                     0.19);
         } catch (DatatypeConfigurationException e) {
             e.printStackTrace();
         }
-        port.creatIngredient("chocollaaaa",10);
-        port.creatIngredient("chocho_noir",100);
-        port.creatIngredient("chocho_polytech",10000);
+        port_m.creatIngredient("chocollaaaa",10);
+        port_m.creatIngredient("chocho_noir",100);
+        port_m.creatIngredient("chocho_polytech",10000);
 
-        new ClientTerminal().showMenu(port);
+        new ClientTerminal().showMenu(port_m,port_cmd);
 
     }
 }

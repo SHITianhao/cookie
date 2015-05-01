@@ -18,6 +18,7 @@ public interface ProcessCommand {
     //1. Créer la commande
     Commande createCommand(String owner, String boutique);
 
+    //Add cookie prédifini
     void addCookieDansCmd(String name);
 
     //OPT . Créer un nouveau cookie

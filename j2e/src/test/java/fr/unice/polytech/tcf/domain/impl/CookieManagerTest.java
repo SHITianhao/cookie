@@ -72,6 +72,6 @@ public class CookieManagerTest {
     public void testAddIngredient(){
         Cookie cookie = cookieManager.create("cookie_test3",ings);
         Cookie found = cookieFinder.findByName("cookie_test3");
-        assertEquals(found.nbIngredient(),2);
+        assertEquals(found.getIngredients().size(),2);
     }
 }

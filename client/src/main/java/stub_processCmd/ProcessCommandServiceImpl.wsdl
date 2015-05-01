@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/tcf" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://webservice.tcf.polytech.unice.fr/" name="ProcessCommandServiceImplService" targetNamespace="http://www.polytech.unice.fr/tcf">
+  <wsdl:import location="http://localhost:8080/demo/webservices/ProcessCommandServiceImpl?wsdl=ProcessCommandService.wsdl" namespace="http://webservice.tcf.polytech.unice.fr/">
+    </wsdl:import>
+  <wsdl:binding name="ProcessCommandServiceImplServiceSoapBinding" type="ns1:ProcessCommandService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="listBoutiques">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listBoutiques">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listBoutiquesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validCommande">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validCommande">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validCommandeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listIngredientsDetail">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listIngredientsDetail">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listIngredientsDetailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCommand">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createCommand">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createCommandResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addIngredientToCookie">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addIngredientToCookie">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addIngredientToCookieResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoutique">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBoutique">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBoutiqueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewStatistiqueCommande">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="viewStatistiqueCommande">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="viewStatistiqueCommandeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProcessCommandServiceImplService">
+    <wsdl:port binding="tns:ProcessCommandServiceImplServiceSoapBinding" name="ProcessCommandServiceImplPort">
+      <soap:address location="http://localhost:8080/demo/webservices/ProcessCommandServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
