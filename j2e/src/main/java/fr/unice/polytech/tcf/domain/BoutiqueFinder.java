@@ -12,5 +12,5 @@ public interface BoutiqueFinder {
     public List<Boutique> findByHoraire(Date h);
     public Boutique findByEndroit(String endroit);
 
-    List<Boutique> listBoutiques();
+    List<Boutique> findAll();
 }

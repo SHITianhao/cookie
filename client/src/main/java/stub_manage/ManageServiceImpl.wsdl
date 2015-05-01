@@ -12,12 +12,39 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="listBoutiques">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listBoutiques">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listBoutiquesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="listIngredients">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="listIngredients">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="listIngredientsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createBoutique">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createBoutique">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createBoutiqueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listCookies">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listCookies">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listCookiesResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -30,21 +57,39 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="creerBoutique">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="creerBoutique">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="creerBoutiqueResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="ingredientIsExist">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="ingredientIsExist">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="ingredientIsExistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCookie">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createCookie">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createCookieResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="supprimerCookie">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="supprimerCookie">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="supprimerCookieResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="supprimerIngredient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="supprimerIngredient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="supprimerIngredientResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

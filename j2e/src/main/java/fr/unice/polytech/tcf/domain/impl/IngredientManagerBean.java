@@ -39,4 +39,11 @@ public class IngredientManagerBean implements IngredientManager {
         return ingredient;
     }
 
+    @Override
+    public Ingredient delete(String name) {
+        Ingredient ingredient = finder.findByName(name);
+        entityManager.remove(entityManager.merge(ingredient));
+        return ingredient;
+    }
+
 }

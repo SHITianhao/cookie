@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface CookieManager {
     public Cookie create(String name,List<String> ingredients);
+    public Cookie delete(String name);
 }

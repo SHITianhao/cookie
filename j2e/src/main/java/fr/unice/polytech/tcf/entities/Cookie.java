@@ -59,7 +59,7 @@ public class Cookie implements Serializable{
         this.totalHT = tot;
     }
 
-    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, fetch=FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     public List<Ingredient> getIngredients() { return ingredients; }
     public void setIngredients(List<Ingredient> i) {
         this.ingredients = i;

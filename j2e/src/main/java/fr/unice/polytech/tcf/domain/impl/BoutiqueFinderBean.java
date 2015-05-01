@@ -55,7 +55,7 @@ public class BoutiqueFinderBean implements BoutiqueFinder {
     }
 
     @Override
-    public List<Boutique> listBoutiques() {
+    public List<Boutique> findAll() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Boutique> cq = cb.createQuery(Boutique.class);
         TypedQuery<Boutique> allQuery = entityManager.createQuery(cq.select(cq.from(Boutique.class)));

@@ -39,7 +39,7 @@ public class  ProcessCommandBean implements ProcessCommand {
 
     @Override
     public List<Boutique> listBoutiques() {
-        return boutiqueFinder.listBoutiques();
+        return boutiqueFinder.findAll();
     }
 
     @Override

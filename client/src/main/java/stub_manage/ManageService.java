@@ -33,8 +33,8 @@ public interface ManageService {
      */
     @WebMethod
     @WebResult(name = "isExist", targetNamespace = "")
-    @RequestWrapper(localName = "boutiqueIsExist", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_mange.BoutiqueIsExist")
-    @ResponseWrapper(localName = "boutiqueIsExistResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_mange.BoutiqueIsExistResponse")
+    @RequestWrapper(localName = "boutiqueIsExist", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.BoutiqueIsExist")
+    @ResponseWrapper(localName = "boutiqueIsExistResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.BoutiqueIsExistResponse")
     public boolean boutiqueIsExist(
         @WebParam(name = "adresse", targetNamespace = "")
         String adresse);
@@ -45,27 +45,21 @@ public interface ManageService {
      *     returns java.util.List<java.lang.String>
      */
     @WebMethod
-    @WebResult(name = "ingredient_list", targetNamespace = "")
-    @RequestWrapper(localName = "listIngredients", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_mange.ListIngredients")
-    @ResponseWrapper(localName = "listIngredientsResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_mange.ListIngredientsResponse")
-    public List<String> listIngredients();
+    @WebResult(name = "boutique_list", targetNamespace = "")
+    @RequestWrapper(localName = "listBoutiques", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.ListBoutiques")
+    @ResponseWrapper(localName = "listBoutiquesResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.ListBoutiquesResponse")
+    public List<String> listBoutiques();
 
     /**
      * 
-     * @param price
-     * @param name
      * @return
-     *     returns boolean
+     *     returns java.util.List<java.lang.String>
      */
     @WebMethod
-    @WebResult(name = "created", targetNamespace = "")
-    @RequestWrapper(localName = "creatIngredient", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_mange.CreatIngredient")
-    @ResponseWrapper(localName = "creatIngredientResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_mange.CreatIngredientResponse")
-    public boolean creatIngredient(
-        @WebParam(name = "name", targetNamespace = "")
-        String name,
-        @WebParam(name = "price", targetNamespace = "")
-        double price);
+    @WebResult(name = "ingredient_list", targetNamespace = "")
+    @RequestWrapper(localName = "listIngredients", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.ListIngredients")
+    @ResponseWrapper(localName = "listIngredientsResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.ListIngredientsResponse")
+    public List<String> listIngredients();
 
     /**
      * 
@@ -78,9 +72,9 @@ public interface ManageService {
      */
     @WebMethod
     @WebResult(name = "boutiquecreated", targetNamespace = "")
-    @RequestWrapper(localName = "creerBoutique", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_mange.CreerBoutique")
-    @ResponseWrapper(localName = "creerBoutiqueResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_mange.CreerBoutiqueResponse")
-    public boolean creerBoutique(
+    @RequestWrapper(localName = "createBoutique", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.CreateBoutique")
+    @ResponseWrapper(localName = "createBoutiqueResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.CreateBoutiqueResponse")
+    public boolean createBoutique(
         @WebParam(name = "adresse", targetNamespace = "")
         String adresse,
         @WebParam(name = "ouvert", targetNamespace = "")
@@ -92,15 +86,88 @@ public interface ManageService {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod
+    @WebResult(name = "cookie_list", targetNamespace = "")
+    @RequestWrapper(localName = "listCookies", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.ListCookies")
+    @ResponseWrapper(localName = "listCookiesResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.ListCookiesResponse")
+    public List<String> listCookies();
+
+    /**
+     * 
+     * @param price
+     * @param name
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(name = "created", targetNamespace = "")
+    @RequestWrapper(localName = "creatIngredient", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.CreatIngredient")
+    @ResponseWrapper(localName = "creatIngredientResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.CreatIngredientResponse")
+    public boolean creatIngredient(
+        @WebParam(name = "name", targetNamespace = "")
+        String name,
+        @WebParam(name = "price", targetNamespace = "")
+        double price);
+
+    /**
+     * 
      * @param name
      * @return
      *     returns boolean
      */
     @WebMethod
     @WebResult(name = "isExist", targetNamespace = "")
-    @RequestWrapper(localName = "ingredientIsExist", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_mange.IngredientIsExist")
-    @ResponseWrapper(localName = "ingredientIsExistResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_mange.IngredientIsExistResponse")
+    @RequestWrapper(localName = "ingredientIsExist", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.IngredientIsExist")
+    @ResponseWrapper(localName = "ingredientIsExistResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.IngredientIsExistResponse")
     public boolean ingredientIsExist(
+        @WebParam(name = "name", targetNamespace = "")
+        String name);
+
+    /**
+     * 
+     * @param ingredients
+     * @param name
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(name = "CookieCreated", targetNamespace = "")
+    @RequestWrapper(localName = "createCookie", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.CreateCookie")
+    @ResponseWrapper(localName = "createCookieResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.CreateCookieResponse")
+    public boolean createCookie(
+        @WebParam(name = "name", targetNamespace = "")
+        String name,
+        @WebParam(name = "ingredients", targetNamespace = "")
+        List<String> ingredients);
+
+    /**
+     * 
+     * @param name
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(name = "cookie_deleted", targetNamespace = "")
+    @RequestWrapper(localName = "supprimerCookie", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.SupprimerCookie")
+    @ResponseWrapper(localName = "supprimerCookieResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.SupprimerCookieResponse")
+    public boolean supprimerCookie(
+        @WebParam(name = "name", targetNamespace = "")
+        String name);
+
+    /**
+     * 
+     * @param name
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(name = "ingredient_deleted", targetNamespace = "")
+    @RequestWrapper(localName = "supprimerIngredient", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.SupprimerIngredient")
+    @ResponseWrapper(localName = "supprimerIngredientResponse", targetNamespace = "http://webservice.tcf.polytech.unice.fr/", className = "stub_manage.SupprimerIngredientResponse")
+    public boolean supprimerIngredient(
         @WebParam(name = "name", targetNamespace = "")
         String name);
 

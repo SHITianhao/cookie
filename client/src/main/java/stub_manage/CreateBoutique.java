@@ -9,12 +9,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for creerBoutique complex type.
+ * <p>Java class for createBoutique complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="creerBoutique">
+ * &lt;complexType name="createBoutique">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -31,13 +31,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "creerBoutique", propOrder = {
+@XmlType(name = "createBoutique", propOrder = {
     "adresse",
     "ouvert",
     "fermer",
     "taxe"
 })
-public class CreerBoutique {
+public class CreateBoutique {
 
     protected String adresse;
     @XmlSchemaType(name = "dateTime")

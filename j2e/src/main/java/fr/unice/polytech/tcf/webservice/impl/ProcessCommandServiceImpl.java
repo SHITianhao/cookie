@@ -39,15 +39,6 @@ public class ProcessCommandServiceImpl implements ProcessCommandService {
     }
 
 
-
-//    @Override
-//    public boolean supprimerIngredient(String name) {
-//        if (addIngredient.deleteIngredient(name) != null){
-//            return true;
-//        }
-//        return false;
-//    }
-
     @Override
     public void addIngredientToCookie(String name) {
         processCommand.ajouterIngredient(name);

@@ -49,6 +49,9 @@ public class IngredientManagerTest {
 //        assertEquals(ingredient.getPrice(),found.getPrice(),0.0000001);
         assertNotEquals(found.getId(),found2.getId());
         assertNotEquals(found.getName(),found2.getName());
+
+        ingredientManager.delete("cola");
+        assertEquals(ingredientFinder.findByName("cola"),null);
     }
 }
 

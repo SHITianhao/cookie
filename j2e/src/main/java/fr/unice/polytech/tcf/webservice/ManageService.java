@@ -15,7 +15,7 @@ public interface ManageService {
 
     @WebMethod
     @WebResult(name = "boutiquecreated")
-    public boolean creerBoutique(@WebParam(name = "adresse")String adresse,
+    public boolean createBoutique(@WebParam(name = "adresse")String adresse,
                                  @WebParam(name = "ouvert")Calendar ouvert,
                                  @WebParam(name = "fermer")Calendar fermer,
                                  @WebParam(name = "taxe")double taxe);
@@ -23,6 +23,10 @@ public interface ManageService {
     @WebMethod
     @WebResult(name = "isExist")
     public boolean boutiqueIsExist(@WebParam(name = "adresse")String adresse);
+
+    @WebMethod
+    @WebResult(name = "boutique_list")
+    public List<String> listBoutiques();
 
     @WebMethod
     @WebResult(name = "ingredient_list")
@@ -33,8 +37,26 @@ public interface ManageService {
     public boolean creatIngredient(@WebParam(name = "name")String name,
                                    @WebParam(name = "price")double price);
 
+
+    @WebMethod
+    @WebResult(name = "ingredient_deleted")
+    public boolean supprimerIngredient(@WebParam(name = "name")String name);
+
     @WebMethod
     @WebResult(name = "isExist")
     public boolean ingredientIsExist(@WebParam(name = "name")String name);
+
+    @WebMethod
+    @WebResult(name = "CookieCreated")
+    public boolean createCookie(@WebParam(name = "name")String name,
+                                @WebParam(name = "ingredients")List<String> ingredients);
+
+    @WebMethod
+    @WebResult(name = "cookie_deleted")
+    public boolean supprimerCookie(@WebParam(name = "name")String name);
+
+    @WebMethod
+    @WebResult(name = "cookie_list")
+    public List<String> listCookies();
 
 }

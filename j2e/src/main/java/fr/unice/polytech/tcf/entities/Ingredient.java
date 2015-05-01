@@ -48,7 +48,7 @@ public class Ingredient implements Serializable {
         this.price = price;
     }
 
-    @ManyToMany(mappedBy = "ingredients")//mapping by ingredients => does not work
+    @ManyToMany(mappedBy = "ingredients")
     public List<Cookie> getCookies() { return cookies; }
     public void setCookies(List<Cookie> cookies) { this.cookies = cookies; }
 

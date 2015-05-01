@@ -45,4 +45,12 @@ public class CookieManagerBean implements CookieManager {
         return cookie;
     }
 
+    @Override
+    public Cookie delete(String name) {
+        Cookie cookie = finder.findByName(name);
+        entityManager.remove(entityManager.merge(cookie));
+        return cookie;
+    }
+
+
 }

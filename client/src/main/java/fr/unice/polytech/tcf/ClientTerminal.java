@@ -36,10 +36,10 @@ public class ClientTerminal {
 //                        new Client().showMenu(port_m);
                         break;
                     case "2":
-//                        new Manager().showMenu(port_cmd);
+//                        new Manager().showMenu(port_m);
                         break;
                     case "3":
-//                        new Directeur().showMenu(null);
+                        new Directeur().showMenu(port_m);
                         break;
                     case "4":
                         finish = true;
@@ -89,7 +89,7 @@ public class ClientTerminal {
         close.set(Calendar.MINUTE,0);
 
         try {
-            port_m.creerBoutique("polytech",
+            port_m.createBoutique("polytech",
                     DatatypeFactory.newInstance().newXMLGregorianCalendar(open),
                     DatatypeFactory.newInstance().newXMLGregorianCalendar(close),
                     0.19);

@@ -24,10 +24,6 @@ public interface ProcessCommandService {
     @WebResult(name = "ingredient_list")
     public List<String> listIngredientsDetail();
 
-//
-//    @WebMethod
-//    @WebResult(name = "deleted")
-//    public boolean supprimerIngredient(@WebParam(name = "name")String name);
 
     @WebMethod
     @WebResult
